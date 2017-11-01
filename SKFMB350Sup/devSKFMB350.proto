@@ -1,0 +1,7 @@
+Terminator = CR;
+
+
+getNumber {
+    out "get_number";
+    in "%f";
+}
