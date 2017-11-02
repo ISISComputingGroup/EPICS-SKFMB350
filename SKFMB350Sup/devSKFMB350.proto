@@ -1,7 +1,17 @@
-Terminator = CR;
+# 
+# This is done for testing. Lewis can't handle not having terminators but arbitrary 
+# bytes can happen mid-message so can't use a single termination character. Set this 
+# to a sequence which is highly unlikely to ever occur.
+#
+Terminator = "[terminator]";
 
-
-getNumber {
-    out "get_number";
-    in "%f";
+read_phase_info {
+	out 0x01 0x80 0xC0 0x0 0x0 0x0 0x0 "%<crc16>";
+	in "%f";
 }
+
+set_rotation_speed {
+    out 0x01 0x80 0x60 "%0.4r" "%<crc16>";
+}
+
+
