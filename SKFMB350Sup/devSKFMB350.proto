@@ -1,17 +1,15 @@
 # 
-# This is done for testing. Lewis can't handle not having terminators but arbitrary 
-# bytes can happen mid-message so can't use a single termination character. Set this 
-# to a sequence which is highly unlikely to ever occur.
+# The terminator for this device is a serial break (not an ascii break character).
 #
-Terminator = "[terminator]";
+# This means holding the serial line low for at least one byte's worth of information.
+#
+Terminator = 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0;
 
 read_phase_info {
 	out 0x01 0x80 0xC0 0x0 0x0 0x0 0x0 "%<crc16>";
-	in "%f";
+	in "%*0.1r" 0xC0 0x0 "%04r";
 }
 
 set_rotation_speed {
     out 0x01 0x80 0x60 "%0.4r" "%<crc16>";
 }
-
-
