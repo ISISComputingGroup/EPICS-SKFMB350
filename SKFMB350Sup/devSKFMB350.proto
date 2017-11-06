@@ -23,5 +23,5 @@ stop {
 
 read_phase_info {
     out 0x01 0x80 0xC0 0x0 0x0 0x0 0x0 "%<crc16>";
-    in "%*01r" 0xC0 0x0 "%(\$1STAT:RAW)01r%(\$1STAT:ILK:RAW)02r%(\$1FREQ)#02r%(\$1PHAS)R%(\$1PHAS:REPEATABILITY)R%(\$1PHAS:PERCENTOK)R";
+    in "%*01r" 0xC0 0x0 "%(\$1STAT:RAW)01r%(\$1ILK:RAW)02r%(\$1FREQ)#02r%(\$1PHAS)R%(\$1PHAS:REPEATABILITY)R%(\$1PHAS:PERCENTOK)R";
 }
