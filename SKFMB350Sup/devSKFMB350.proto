@@ -37,5 +37,5 @@ read_rotator_angle {
 
 read_phase_delay {
     out 0x01 0x80 0x85 0x0 0x0 0x0 0x0 "%<crc16>";
-    in "%*01r" 0x81 "%*06r%(\$1PHAS:SP:RBV:RAW)#04r";
+    in "%*01r" 0x85 "%*06r%(\$1PHAS:SP:RBV:RAW)#04r";
 }
