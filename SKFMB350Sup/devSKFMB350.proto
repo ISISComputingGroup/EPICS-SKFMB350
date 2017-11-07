@@ -13,6 +13,10 @@ set_frequency {
     out 0x01 0x80 0x60 "%#0.4r" "%<crc16>";
 }
 
+set_gate_width {
+    out 0x01 0x80 0x8E "%#0.4r" "%<crc16>";
+}
+
 start {
     out 0x01 0x80 0x20 0x0 0x0 0x0 0x0 "%<crc16>";
 }
@@ -23,10 +27,15 @@ stop {
 
 read_phase_info {
     out 0x01 0x80 0xC0 0x0 0x0 0x0 0x0 "%<crc16>";
-    in "%*01r" 0xC0 0x0 "%(\$1STAT:RAW)01r%(\$1ILK:RAW)02r%(\$1FREQ:RAW)#02r%(\$1PHAS)R%(\$1PHAS:REPEATABILITY)R%(\$1PHAS:PERCENTOK)R";
+    in "%*01r" 0xC0 0x0 "%(\$1STAT:RAW)01r%(\$1ILK:RAW)02r%(\$1FREQ:RAW)#02r%(\$1PHAS)R%(\$1GATE)R%(\$1PHAS:PERCENTOK)R";
 }
 
 read_rotator_angle {
     out 0x01 0x80 0x81 0x0 0x0 0x0 0x0 "%<crc16>";
-    in "%*01r" 0x81 "%*06r%(\$1ANGLE:ROTATOR)R";
+    in "%*01r" 0x81 "%*06r%(\$1ANGLE:ROTATOR)#04r";
+}
+
+read_phase_delay {
+    out 0x01 0x80 0x85 0x0 0x0 0x0 0x0 "%<crc16>";
+    in "%*01r" 0x81 "%*06r%(\$1PHAS:SP:RBV:RAW)#04r";
 }
