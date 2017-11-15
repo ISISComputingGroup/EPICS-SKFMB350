@@ -3,13 +3,11 @@
 #
 # This means holding the serial line low for at least one byte's worth of information.
 #
-OutTerminator = 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0;
+OutTerminator = "";
 InTerminator = "";
 
-ReadTimeout = 50;
-ReplyTimeout = 50;
-
 ExtraInput = Ignore;
+ReadTimeout = 50;
 
 #
 # This protocol is a bit complicated and uses a lot of binary converters:
@@ -43,7 +41,7 @@ stop {
 
 read_phase_info {
     out 0x01 0x80 0xC0 0x0 0x0 0x0 0x0 "%#<skf_modbus>";
-    in "%*01r" 0xC0 0x0 "%(\$1STAT:RAW)01r%(\$1ILK:RAW)02r%(\$1FREQ:RAW)#02r%(\$1PHAS)R%(\$1GATE)R%(\$1PHAS:PERCENTOK)R%#<skf_modbus>";
+    in "%*01r" 0xC0 0x0 "%(\$1STAT:RAW)01r%(\$1ILK:RAW)02r%(\$1FREQ:RAW)#02r%(\$1PHAS)#R%(\$1GATE)#R%(\$1PHAS:PERCENTOK)#R%#<skf_modbus>";
 }
 
 read_rotator_angle {
@@ -57,5 +55,5 @@ set_rotator_angle {
 
 read_phase_delay {
     out 0x01 0x80 0x85 0x0 0x0 0x0 0x0 "%#<skf_modbus>";
-    in "%*01r" 0x85 "%*06r%(\$1PHAS:SP:RBV:RAW)#04r%#<skf_modbus>";
+    in "%*01r" 0x85 "%*06r%(\$1PHAS:SP:RBV:RAW)#R%#<skf_modbus>";
 }
