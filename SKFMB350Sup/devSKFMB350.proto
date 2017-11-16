@@ -1,7 +1,6 @@
 # 
-# The terminator for this device is a serial break (not an ascii break character).
-#
-# This means holding the serial line low for at least one byte's worth of information.
+# The terminator for this device is a serial break (not an ascii break character). 
+# This is sent via an asyn option so does not appear here.
 #
 
 ExtraInput = Ignore;
