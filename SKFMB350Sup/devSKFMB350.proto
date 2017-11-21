@@ -3,7 +3,7 @@
 # This is sent via an asyn option so does not appear here.
 #
 
-ExtraInput = Ignore;
+ExtraInput = Ignore; # Sometimes get trailing nulls after the checksum.
 ReadTimeout = 50;
 
 #
