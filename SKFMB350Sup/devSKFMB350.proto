@@ -38,12 +38,12 @@ stop {
 
 read_phase_info {
     out "%(\$1ADDRESS)0.1r" 0x80 0xC0 0x0 0x0 0x0 0x0 "%#<skf_modbus>";
-    in "%*01r"  0xC0 0x0 "%(\$1STAT:RAW.A)01r%(\$1ILK:RAW.A)02r%(\$1FREQ:RAW)#02r%(\$1PHAS:RAW)#R%(\$1PHAS_ERR:RAW)#R%(\$1PHAS:PERCENTOK)#R%#<skf_modbus>";
+    in "%01r"  0xC0 0x0 "%(\$1STAT:RAW.A)01r%(\$1ILK:RAW.A)02r%(\$1FREQ:RAW)#02r%(\$1PHAS:RAW)#R%(\$1PHAS_ERR:RAW)#R%(\$1PHAS:PERCENTOK)#R%#<skf_modbus>";
 }
 
 read_rotator_angle {
     out "%(\$1ADDRESS)0.1r" 0x80 0x81 0x0 0x0 0x0 0x0 "%#<skf_modbus>";
-    in "%*01r"  0x81 "%*06r%(\$1ANGLE:ROTATOR:RAW)#04r%#<skf_modbus>";
+    in "%01r"  0x81 "%*06r%(\$1ANGLE:ROTATOR:RAW)#04r%#<skf_modbus>";
 }
 
 set_rotator_angle {
@@ -52,5 +52,5 @@ set_rotator_angle {
 
 read_phase_delay {
     out "%(\$1ADDRESS)0.1r" 0x80 0x85 0x0 0x0 0x0 0x0 "%#<skf_modbus>";
-    in "%*01r"  0x85 "%*06r%(\$1PHAS:SP:RBV:RAW)#R%#<skf_modbus>";
+    in "%01r"  0x85 "%*06r%(\$1PHAS:SP:RBV:RAW)#R%#<skf_modbus>";
 }
